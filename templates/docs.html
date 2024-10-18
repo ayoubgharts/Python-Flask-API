@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: left;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1, h2 {
+            color: #007bff;
+        }
+
+        p, ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .code {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        .endpoint {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>API Documentation</h1>
+
+    <p>Welcome to the API documentation. This guide provides all the necessary information on how to interact with the API.</p>
+
+    <h2>Base URL</h2>
+    <p>All requests should be made to the following base URL:</p>
+    <div class="code">http://127.0.0.1:5000</div>
+
+    <h2>Endpoints</h2>
+    <ul>
+        <li>
+            <span class="endpoint">GET /api/items</span>
+            <p>Retrieve a list of all available items.</p>
+        </li>
+        <li>
+            <span class="endpoint">GET /api/items/&lt;id&gt;</span>
+            <p>Retrieve the details of a specific item by its ID. Replace <code>&lt;id&gt;</code> with the actual ID (e.g., <code>/api/items/age</code>).</p>
+        </li>
+        <li>
+            <span class="endpoint">POST /api/items</span>
+            <p>Add a new item to the list. The request body should be in JSON format and include an <code>id</code> field (string) and other key-value pairs.</p>
+            <div class="code">
+                Example JSON request body: <br>
+                {<br>
+                &nbsp;&nbsp;"id": "new_id",<br>
+                &nbsp;&nbsp;"Name": "New Item Name"<br>
+                }
+            </div>
+        </li>
+    </ul>
+
+    <h2>Response Codes</h2>
+    <ul>
+        <li><strong>200 OK</strong> - The request was successful.</li>
+        <li><strong>201 Created</strong> - A new item was successfully created.</li>
+        <li><strong>400 Bad Request</strong> - The request was invalid (e.g., missing or incorrect data).</li>
+        <li><strong>404 Not Found</strong> - The requested item was not found.</li>
+    </ul>
+
+    <h2>Error Handling</h2>
+    <p>If an invalid URL is accessed, the user will be redirected to a custom error page with an option to go back to the homepage.</p>
+
+    <a class="button" href="/">Back to Home</a>
+</body>
+
+</html>

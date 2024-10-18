@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Items List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                <td><a href="/api/items/{{ item.id }}" class="link">{{ item.id }}</a></td>
+                <td>
+                    {% for key, value in item.items() %}
+                    {% if key != 'id' %}
+                    <strong>{{ key }}:</strong> {{ value }}<br>
+                    {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>        
+    </table>
+    <h1>Add ID to this Url to Get Result:</h1>
+    <p>http://127.0.0.1:5000/api/items</p>
+    <h3>Example</h3>
+    <ul style="text-align: center;">
+        <h4>main url</h4>
+        <li>
+            <p>http://127.0.0.1:5000/api/items</p>
+        </li>
+        <h4>repons url</h4>
+        <li>
+            <p>http://127.0.0.1:5000/api/items<span style="color: #007bff;">/age</span></p>
+        </li>
+    </ul>
+
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        .link {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .link:hover {
+            color: #0056b3;
+        }
+        .id-list {
+            margin-top: 20px;
+            text-align: left;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to My API</h1>
+    <p>Use the following endpoints to interact with the API:</p>
+    <ul>
+        <li><a class="link" href="/api/items" target="_blank">/api/items</a> - Get all items</li>
+        <li><a class="link" href="/api/items/firstname" target="_blank">/api/items/&lt;id&gt;</a> - Get a specific item by ID</li>
+    </ul>
+
+<!-- New Section: List of Available IDs -->
+<section class="id-list">
+    <h2>Available IDs</h2>
+    <ul>
+        {% for item in items %}
+            <li><a href="/api/items/{{ item['id'] }}" class="link">{{ item['id'] }}</a></li>
+        {% endfor %}
+    </ul>
+</section>
+
+</body>
+</html>
