@@ -7,7 +7,9 @@ This API serves as a simple yet powerful demonstration of what I can build as a 
 
 ## Prewiew
 ![simple api home page](images/screenshot1.png)
+
 ![all items endpoints page](images/screenshot1.png)
+
 ![single item page](images/screenshot1.png)
 
 ## Features
