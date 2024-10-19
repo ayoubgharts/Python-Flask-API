@@ -4,51 +4,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Not Found</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 50px;
-        }
-        .error-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .error-card h2 {
-            color: #e74c3c;
-            margin-bottom: 20px;
-        }
-        .error-card p {
-            font-size: 1.1em;
-            margin: 10px 0;
-        }
-        .home-btn {
-            display: inline-block;
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-        .home-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>404 Page not found</title>
+
+    <!--? FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--? Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!--? Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
 </head>
 
 <body>
-    <div class="error-card">
-        <h2>Item Not Found</h2>
-        <p>The requested item does not exist. Please check the URL or go back to the homepage.</p>
-        <a href="/" class="home-btn">Go to Homepage</a>
-    </div>
+
+    <!--? Header -->
+    <header>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">ayoubgharts API</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                    aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ayoubgharts API</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs">Documentation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/api/items">Items</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    All ID's
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    {% for item in items %}
+                                    <li class="">
+                                        <a href="/api/items/{{ item['id'] }}" class="dropdown-item">{{ item['id'] }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main404">
+        <div class="container">
+            <h2>404 - Error</h2>
+            <h3>Page Not Found</h3>
+            <p>
+                The requested Page does not exist. Please check the URL or go back to the homepage.
+            </p>
+            <a href="/" class="backbtn">
+                back to home
+            </a>
+        </div>
+    </main>
+
+    <!--? Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; 2024 ayoubgharts API. All Rights Reserved.</p>
+            <p class="copyright">Powered by <a href="#">ayoubgharts</a></p>
+        </div>
+    </footer>
+
+    <!--? Bootstrap Bundle-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
+
+    <!--? Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+
 </body>
 
 </html>

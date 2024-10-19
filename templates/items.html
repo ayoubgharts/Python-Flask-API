@@ -4,76 +4,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Items List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 50px;
-        }
+    <title>ayoubgharts | all items</title>
 
-        table {
-            width: 50%;
-            margin: 0 auto;
-            border-collapse: collapse;
-            background-color: #fff;
-        }
+    <!--? FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        th,
-        td {
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
+    <!--? Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-        th {
-            background-color: #007bff;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <!--? Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
 </head>
 
 <body>
-    <h1>Items List</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for item in items %}
-            <tr>
-                <td><a href="/api/items/{{ item.id }}" class="link">{{ item.id }}</a></td>
-                <td>
-                    {% for key, value in item.items() %}
-                    {% if key != 'id' %}
-                    <strong>{{ key }}:</strong> {{ value }}<br>
-                    {% endif %}
+
+    <!--? Header -->
+    <header>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">ayoubgharts API</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                    aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ayoubgharts API</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs">Documentation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/api/items">Items</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    All ID's
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    {% for item in items %}
+                                    <li class="">
+                                        <a href="/api/items/{{ item['id'] }}" class="dropdown-item">{{ item['id'] }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+        <section class="table">
+            <h2>Items List</h2>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Details</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td><a href="/api/items/{{ item.id }}" class="link">{{ item.id }}</a></td>
+                        <td>
+                            {% for key, value in item.items() %}
+                            {% if key != 'id' %}
+                            <strong>{{ key }}:</strong> {{ value }}<br>
+                            {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <button class="copy" title="copy id">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                            <button class="copied">
+                                <i class="fa-solid fa-check"></i>
+                            </button>
+                        </td>
+                    </tr>
                     {% endfor %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>        
-    </table>
-    <h1>Add ID to this Url to Get Result:</h1>
-    <p>http://127.0.0.1:5000/api/items</p>
-    <h3>Example</h3>
-    <ul style="text-align: center;">
-        <h4>main url</h4>
-        <li>
-            <p>http://127.0.0.1:5000/api/items</p>
-        </li>
-        <h4>repons url</h4>
-        <li>
-            <p>http://127.0.0.1:5000/api/items<span style="color: #007bff;">/age</span></p>
-        </li>
-    </ul>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+
+    <!--? Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; 2024 ayoubgharts API. All Rights Reserved.</p>
+            <p class="copyright">Powered by <a href="#">ayoubgharts</a></p>
+        </div>
+    </footer>
+
+
+    <!--? Bootstrap Bundle-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
+
+    <!--? Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/items.js') }}"></script>
+
 
 </body>
 

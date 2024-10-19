@@ -1,54 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to My API</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            font-size: 1.2em;
-        }
-        .link {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        .link:hover {
-            color: #0056b3;
-        }
-        .id-list {
-            margin-top: 20px;
-            text-align: left;
-            display: inline-block;
-        }
-    </style>
-</head>
-<body>
-    <h1>Welcome to My API</h1>
-    <p>Use the following endpoints to interact with the API:</p>
-    <ul>
-        <li><a class="link" href="/api/items" target="_blank">/api/items</a> - Get all items</li>
-        <li><a class="link" href="/api/items/firstname" target="_blank">/api/items/&lt;id&gt;</a> - Get a specific item by ID</li>
-    </ul>
+    <title>ayoubgharts API</title>
 
-<!-- New Section: List of Available IDs -->
-<section class="id-list">
-    <h2>Available IDs</h2>
-    <ul>
-        {% for item in items %}
-            <li><a href="/api/items/{{ item['id'] }}" class="link">{{ item['id'] }}</a></li>
-        {% endfor %}
-    </ul>
-</section>
+    <!-- Favicon -->
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+
+    <!--? FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!--? Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!--? Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+
+<body>
+
+    <!--? Header -->
+    <header>
+        <nav class="navbar navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">ayoubgharts API</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                    aria-labelledby="offcanvasDarkNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">ayoubgharts API</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/docs">Documentation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/api/items">Items</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    All ID's
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                    {% for item in items %}
+                                    <li class="">
+                                        <a href="/api/items/{{ item['id'] }}" class="dropdown-item">{{ item['id'] }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+
+            <section class="hero-top">
+                <h1>Explore Our Flask - API</h1>
+                <p class="right">Powered by: ayoubgharts</p>
+                <p>
+                    This API serves as a simple yet powerful demonstration of what I can build as a software engineer.
+                    It is designed to showcase my personal information and skills while providing a seamless way to
+                    interact with the data. Through this API, you can access various endpoints to retrieve lists of
+                    items, get specific items by ID, and explore the functionality I’ve implemented. It’s a glimpse into
+                    my capabilities and a testament to my journey in software development. Start exploring and discover
+                    the potential!
+                </p>
+            </section>
+
+            <section class="hero-body">
+                <h2>Get Started:</h2>
+                <p>Use the following endpoints to interact with the API:</p>
+                <ul class="endpoints">
+                    <h5>- Get all items list</h5>
+                    <li class="reponse">
+                        <a class="link" href="/api/items" target="_blank">/api/items</a>
+                        <div class="control-btns">
+                            <a title="browse" href="/api/items" target="_blank">
+                                <i class="fa-regular fa-share-from-square"></i>
+                            </a>
+                            <button class="copyButton" title="copy path" onclick="copyToClipboard(this)">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </li>
+                    <h5>- Get specific item by ID</h5>
+                    <li class="reponse">
+                        <a class="link" href="/api/items/firstname" target="_blank">/api/items/firstname</a>
+                        <div class="control-btns">
+                            <a title="browse" href="/api/items/firstname" target="_blank">
+                                <i class="fa-regular fa-share-from-square"></i>
+                            </a>
+                            <button class="copyButton" title="copy path" onclick="copyToClipboard(this)">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+
+            </section>
+
+            <section class="hero-body">
+                <h2>How to use url:</h2>
+                <p>Add ID to this Url to Get Result.</p>
+                <ul class="endpoints">
+                    <h5>- Add ID ex{ age }, to the url</h5>
+                    <li class="reponse">
+                        <a class="link" href="/api/items/age" target="_blank">/api/items/<span>age</span></a>
+                        <div class="control-btns">
+                            <a title="browse" href="/api/items" target="_blank">
+                                <i class="fa-regular fa-share-from-square"></i>
+                            </a>
+                            <button class="copyButton" title="copy path" onclick="copyToClipboard(this)">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+
+            </section>
+
+            <section class="hero-body">
+                <h2>Available ID's:</h2>
+                <p>Check this list of all IDs.</p>
+                <ul class="endpoints">
+                    {% for item in items %}
+                    <li class="reponse">
+                        <a href="/api/items/{{ item['id'] }}" class="link">{{ item['id'] }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </section>
+
+        </div>
+    </section>
+
+    <!--? Footer -->
+    <footer>
+        <div class="container">
+            <p class="mb-0">&copy; 2024 ayoubgharts API. All Rights Reserved.</p>
+            <p class="copyright">Powered by <a href="#">ayoubgharts</a></p>
+        </div>
+    </footer>
+
+
+    <!--? Bootstrap Bundle-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
+
+    <!--? Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 
 </body>
+
 </html>

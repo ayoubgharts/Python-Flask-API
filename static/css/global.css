@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+:root {
+    --blacked: #202326;
+    --dark: #1a1d21;
+    --primary: #0d6efd;
+    --success: #2fd170;
+    --light: aliceblue;
+    --lighter: rgb(191, 191, 191);
+    --gray: rgb(171, 171, 171);
+}
+
+body {
+    font-family: 'Poppins', helvetica;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: var(--dark);
+    color: var(--light);
+}
+
+/*? Normalize */
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.hero {
+    margin: 80px auto;
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* .hero h1{
+    margin-bottom: 30px;
+} */
+.hero .endpoints {
+    text-align: start;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.hero .endpoints .reponse {
+    width: 100%;
+    padding: 15px 30px;
+    margin: 15px 0 25px 0;
+    background: var(--lighter);
+    border-radius: 15px;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero .endpoints .reponse .link {
+    color: var(--dark);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    opacity: 0.8.8;
+}
+
+.hero .endpoints .reponse .link::before {
+    content: '$';
+    display: block;
+    color: var(--dark);
+    opacity: 0.5;
+    margin-right: 30px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.hero .endpoints .reponse .link span {
+    color: var(--primary);
+}
+
+.hero .endpoints .reponse .control-btns {
+    display: flex;
+    align-items: center;
+}
+
+.hero .endpoints .reponse .control-btns button,
+.hero .endpoints .reponse .control-btns button.copied,
+.hero .endpoints .reponse .control-btns a {
+    margin: 0 5px;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--light);
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease .3s;
+}
+
+.hero .endpoints .reponse .control-btns button:hover,
+.hero .endpoints .reponse .control-btns a:hover {
+    background: var(--primary);
+    color: var(--light);
+}
+
+.hero .endpoints .reponse .control-btns .copied {
+    background: var(--success) !important;
+    width: auto !important;
+    padding: 10px !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+.hero .endpoints .reponse .control-btns .copied i {
+    margin-right: 5px;
+}
+
+
+/*? *********************/
+/**? section hero top ***/
+/*? *********************/
+
+.hero .hero-top {
+    text-align: center;
+    color: var(--light);
+    margin-bottom: 75px;
+}
+
+.hero .hero-top .right {
+    color: var(--light);
+    opacity: 0.8;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 15px auto;
+}
+
+.hero .hero-top p {
+    color: var(--gray);
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 auto;
+    width: 75.0%;
+}
+
+
+/*? *********************/
+/**? section hero body ***/
+/*? *********************/
+.hero .hero-body {
+    text-align: start;
+    margin-bottom: 70px;
+}
+
+.hero .hero-body p {
+    text-align: start;
+    color: var(--gray);
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.hero .hero-body h2::before {
+    content: '#';
+    color: var(--gray);
+    opacity: 0.7;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+
+/*? *********************/
+/**? footer ***/
+/*? *********************/
+
+footer {
+    background: var(--blacked);
+    display: block;
+    width: 100%;
+    padding: 20px;
+}
+
+footer ul {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+footer ul li {
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    transition: all ease .3s;
+}
+
+footer ul li a:hover{
+    color: var(--primary) !important;
+}
+footer p{
+    text-align: center;
+    margin: 5px 0;
+}
+footer .copyright{
+    color: var(--gray);
+    font-size: 14px;
+    font-weight: 300;
+}
+footer .copyright a{
+    text-decoration: none;
+}
+
+
+/*? *********************/
+/**? main  ***/
+/*? *********************/
+main{
+    margin-top: 80px;
+    margin-bottom: 60px;
+}
+main .table {
+    width: 80%;
+    margin: 0 auto;
+}
+main .table .copy{
+    outline: none;
+    border: none;
+    background: var(--light);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all ease .3s;
+}
+main .table .copy:hover{
+    background: var(--primary);
+    color: var(--light);
+}
+main .table .copied{
+    outline: none;
+    border: none;
+    background: var(--success);
+    color: var(--light);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all ease .3s;
+}
+main .table h2{
+    color: var(--light);
+    text-align: center;
+    margin-bottom: 25px;
+}
+main .table h2::before{
+    content: '#';
+    color: var(--gray);
+    font-size: 20px;
+    font-weight: 300;
+}
+
+
+/*? *********************/
+/**? main documentation ***/
+/*? *********************/
+
+main .docs-hero {
+    width: 70%;
+    margin: 20px auto;
+    text-align: center;
+    margin-bottom: 60px;
+}
+main .docs-hero h1{
+    font-size: 3rem;
+}
+main .docs-hero p{
+    color: var(--gray);
+}
+main .secpoint {
+    margin-bottom: 30px;
+}
+main .secpoint h2{
+    margin-bottom: 15px;
+}
+main .secpoint h2::before{
+    content: '#';
+    color: var(--gray);
+    font-size: 18px;
+    font-weight: 300;
+}
+main .secpoint p{
+    color: var(--gray);
+    font-weight: 300;
+}
+main .secpoint .codepoint {
+    width: 100%;
+    color: var(--dark);
+    background: var(--light);
+    border-radius: 10px;
+    padding: 15px 25px;
+}
+
+main .secpoint .buttonbackto{
+    text-decoration: none;
+    padding: 15px 25px;
+    background: var(--primary);
+    color: var(--light);
+    border-radius: 10px;
+    transition: all ease .3s;
+}
+main .secpoint .buttonbackto:hover{
+    background: var(--light);
+    color: var(--dark);
+}
+
+
+
+/*? *********************/
+/**? item single page ***/
+/*? *********************/
+
+main .item-card {
+    padding: 30px;
+    background: var(--light);
+    color: var(--dark);
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+    text-align: start;
+}
+main .item-card h2{
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/*? *********************/
+/**? item single page ***/
+/*? *********************/
+
+.main404 {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    text-align: center;
+}
+.main404 h2{
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+.main404 h3{
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.main404 p{
+    color: var(--gray);
+    font-weight: 300;
+    font-size: 18px;
+    width: 60%;
+    margin: 10px auto;
+    margin-bottom: 40px;
+}
+.main404 .backbtn{
+    background: var(--light);
+    color: var(--dark);
+    text-transform: capitalize;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all ease .3s;
+}
+.main404 .backbtn:hover{
+    color: var(--light);
+    background: var(--primary);
+}

@@ -6,12 +6,19 @@ app = Flask(__name__)
 
 # Sample data to simulate a database with string IDs
 items = [
-    {"id": "firstname", "First Name": "Ayoub"},
-    {"id": "familyname", "Family Name": "Ghiouani"},
-    {"id": "age", "Age": "28 years old"},
-    {"id": "ntl", "Nationality": "Moroccan"},
-    {"id": "email", "Adrress Email": "ayoubgharts@gmail.com"},
+    {"id": "firstname",   "content": "Ayoub", "endpoint": "/api/items/{id}"},
+    {"id": "familyname",  "content": "Ghiouani", "endpoint": "/api/items/{id}"},
+    {"id": "age",         "content": "28 years old", "endpoint": "/api/items/{id}"},
+    {"id": "nationality", "content": "Moroccan", "endpoint": "/api/items/{id}"},
+    {"id": "email",       "content": "ayoubgharts@gmail.com", "endpoint": "/api/items/{id}"},
+    {"id": "address",     "content": "Fez, Morocco", "endpoint": "/api/items/{id}"},
+    {"id": "frontend",    "content": "HTML/CSS, Javascript, React, Git/Github, Next.js, Bootstrap", "endpoint": "/api/items/{id}"},
+    {"id": "backend",     "content": "PHP, mysql, PostgreSQL, Python, Flask, NodeJS", "endpoint": "/api/items/{id}"},
 ]
+
+# Update each item's 'endpoint' field dynamically
+for item in items:
+    item['endpoint'] = item['endpoint'].format(id=item['id'])
 
 # Define a route for the docs
 @app.route('/docs')
@@ -46,6 +53,9 @@ def add_item():
     if not isinstance(new_item["id"], str):
         return jsonify({"error": "ID must be a string"}), 400
 
+    # Update the 'endpoint' field for the new item
+    new_item['endpoint'] = f"/api/items/{new_item['id']}"
+    
     # Append the new item to the items list
     items.append(new_item)
     
@@ -58,6 +68,12 @@ def home():
     # Render the index.html template located in the 'templates' folder
     # and pass the items list to show available IDs
     return render_template('index.html', items=items)
+
+# Custom error handler for 404 Not Found
+@app.errorhandler(404)
+def not_found(error):
+    # Render the custom 404.html template located in the 'templates' folder
+    return render_template('404.html'), 404
 
 # Start the web server when this file is run
 if __name__ == '__main__':
