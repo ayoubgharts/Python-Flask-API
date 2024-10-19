@@ -6,11 +6,11 @@ This API serves as a simple yet powerful demonstration of what I can build as a 
 > Ayoub Ghiouani (ayoubgharts).
 
 ## Prewiew
-![simple api home page](images/screenshot1.png)
+![simple api home page](screen/screenshot1.png)
 
-![all items endpoints page](images/screenshot1.png)
+![all items endpoints page](screen/screenshot1.png)
 
-![single item page](images/screenshot1.png)
+![single item page](screen/screenshot1.png)
 
 ## Features
 
